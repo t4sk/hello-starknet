@@ -5,8 +5,8 @@ https://starknet.io/docs
 ### Install
 
 ```shell
-python -m venv ~/cairo_venv
-source ~/cairo_venv/bin/activate
+python -m venv ./venv
+source ./venv/bin/activate
 
 pip3 install ecdsa fastecdsa sympy
 
