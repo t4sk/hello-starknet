@@ -92,16 +92,18 @@ nile node
 - [x] felt
 - [x] counter
 - [x] function (input, outputs)
-- @external, @view
+- @storage_var - declares variable to be stored in storage
+- @external - function can be called by other users and contracts
+- @view - same as @external, in addition read-only
 - builtins (range_check)
 - implicit args
-- wallet
+- import
 - token
+- wallet
 - math
 - map
 - recursion
 - array
-- import
 - emit event
 - private data are not private
 - constructor
@@ -114,6 +116,7 @@ nile node
 - events
 - L1 to L2, L2 to L1
 - default
+- hash
 - ecdsa
 - amm
 
