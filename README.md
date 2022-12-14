@@ -52,7 +52,7 @@ export STARKNET_WALLET=starkware.starknet.wallets.open_zeppelin.OpenZeppelinAcco
 
 starknet declare --contract compiled/hello.json
 
-export CLASS_HASH=0x5f30a6f6e00f2d8a2a60d464ebdeab17bb4c49a90c6aff4e2d2e2da3b11c8f7
+export CLASS_HASH=0x4880eb08829c9c36c2003a36258a75e81f3dc9054b0c358c80c5c133745ae53
 starknet deploy --class_hash $CLASS_HASH
 ```
 
@@ -91,9 +91,10 @@ nile node
 - [x] comments
 - [x] felt
 - [x] counter
+- [x] function (input, outputs)
+- @external, @view
 - builtins (range_check)
 - implicit args
-- function (input, outputs)
 - wallet
 - token
 - math
