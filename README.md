@@ -98,7 +98,7 @@ nile node
 - builtins (range_check)
 - implicit args
 - import
-- token
+- [x] token
 - wallet
 - math
 - map
