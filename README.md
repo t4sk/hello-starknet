@@ -5,6 +5,8 @@ https://starknet.io/docs
 ### Install
 
 ```shell
+pyenv install 3.9.14
+pyenv local 3.9.14
 python -m venv ./venv
 source ./venv/bin/activate
 
@@ -104,10 +106,12 @@ nile node
 - map
 - recursion
 - array
-- emit event
+- [x] emit event
+  - low level emit_event
 - private data are not private
 - constructor
 - storage - multi values, struct,
+- struct
 - array, tuple, struct calldata
 - sender, block info
 - interface, calling other contracts
