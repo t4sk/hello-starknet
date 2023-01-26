@@ -101,25 +101,25 @@ nile node
 - implicit args
 - import
 - [x] token
-- wallet
+- [ ] wallet
 - math
+- [x] error
 - map
 - recursion
 - array
 - [x] emit event
   - low level emit_event
 - private data are not private
-- constructor
+- [x] constructor
 - storage - multi values, struct,
 - struct
 - array, tuple, struct calldata
 - sender, block info
-- interface, calling other contracts
+- [ ] interface, calling other contracts
 - delegate call (library call)
-- factory
-- events
+- [ ] factory
 - L1 to L2, L2 to L1
-- default
+- [ ] default entry point
 - hash
 - ecdsa
 - amm

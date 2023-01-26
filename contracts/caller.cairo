@@ -20,7 +20,7 @@ func get_last_caller{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check
     return (res,);
 }
 
-// TODO: why caller address is 0?
+// TODO: why caller address is 0? returns 0 if not called by contract
 @view
 func get_caller{syscall_ptr: felt*}() -> (res: felt) {
     let (addr) = get_caller_address();
