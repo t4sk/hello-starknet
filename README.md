@@ -114,7 +114,8 @@ nile node
 - storage - multi values, struct,
 - struct
 - array, tuple, struct calldata
-- sender, block info
+- [ ] sender
+- [ ] block info
 - [ ] interface, calling other contracts
 - delegate call (library call)
 - [ ] factory
