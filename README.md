@@ -13,6 +13,18 @@ source ./venv/bin/activate
 pip3 install ecdsa fastecdsa sympy
 
 pip3 install cairo-lang
+
+# nile
+sudo apt install -y libgmp3-dev
+
+pip install cairo-nile
+nile init
+
+pytest tests
+
+touch .env
+# ACCOUNT_1=123456 (private key without 0x)
+
 ```
 
 ### Compile and run cairo
@@ -112,10 +124,11 @@ nile node
 - private data are not private
 - [x] constructor
 - storage - multi values, struct,
-- struct
+- [ ] storage with struct
 - array, tuple, struct calldata
 - [ ] sender
-- [ ] block info
+- [x] block info
+- [x] tx info
 - [ ] interface, calling other contracts
 - delegate call (library call)
 - [ ] factory
@@ -124,5 +137,7 @@ nile node
 - hash
 - ecdsa
 - amm
+
+- [ ] tools (nile)
 
 ### Cairo
