@@ -23,7 +23,11 @@ nile init
 pytest tests
 
 touch .env
-# ACCOUNT_1=123456 (private key without 0x)
+# ACCOUNT_1=0x123456
+
+# list starknet accounts
+cat ~/.starknet_accounts/starknet_open_zeppelin_accounts.json
+
 
 ```
 
@@ -101,6 +105,9 @@ nile node
 
 ### Starknet
 
+- [ ] account abstraction
+- [ ] remix
+
 - [x] hello world
 - [x] comments
 - [x] felt
@@ -118,14 +125,16 @@ nile node
 - [x] error
 - map
 - recursion
-- array
+- [x] memory array
+- [ ] state variable array?
+- array, tuple, struct calldata
+- alloc
 - [x] emit event
   - low level emit_event
 - private data are not private
 - [x] constructor
 - storage - multi values, struct,
 - [ ] storage with struct
-- array, tuple, struct calldata
 - [ ] sender
 - [x] block info
 - [x] tx info
@@ -134,7 +143,7 @@ nile node
 - [ ] factory
 - L1 to L2, L2 to L1
 - [ ] default entry point
-- hash
+- hash (keccak, pedersen)
 - ecdsa
 - amm
 
