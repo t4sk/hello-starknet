@@ -113,6 +113,8 @@ nile node
 - [x] felt
 - [x] counter
 - [x] function (input, outputs)
+- [ ] variable
+- [ ] if / else
 - @storage_var - declares variable to be stored in storage
 - @external - function can be called by other users and contracts
 - @view - same as @external, in addition read-only
@@ -146,6 +148,14 @@ nile node
 - hash (keccak, pedersen)
 - ecdsa
 - amm
+
+# cairo
+
+- [ ] registers
+
+  - [x] ap
+  - [ ] fp
+  - [ ] pc
 
 - [ ] tools (nile)
 
