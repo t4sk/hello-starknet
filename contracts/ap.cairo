@@ -9,7 +9,8 @@
 //      throughout the scope of a function.
 // pc - pc (program counter) - points to the current instruction
 
-func test_1(x: felt) -> (felt) {
+@view
+func test_1(x: felt) -> (y: felt) {
     // compute x^4 + x
     let x0 = ap;
     [x0] = x, ap++;
@@ -22,10 +23,11 @@ func test_1(x: felt) -> (felt) {
     // x^4 + x
     [ap] = [ap - 1] + [x0], ap++;
 
-    return ([ap],);
+    return ([ap - 1],);
 }
 
-func test_2(x: felt) -> (felt) {
+@view
+func test_2(x: felt) -> (y: felt) {
     // compute x^3 + 23x^2 + 45x + 67
 
     // x^2
@@ -47,5 +49,5 @@ func test_2(x: felt) -> (felt) {
     [ap] = [ap - 2] + [ap - 1], ap++;
 
     // x^3 + 23x^2 + 45x + 67
-    return ([ap] + 67,);
+    return ([ap - 1] + 67,);
 }
