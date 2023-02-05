@@ -114,7 +114,7 @@ nile node
 - [x] counter
 - [x] function (input, outputs)
 - [ ] variable
-- [ ] if / else
+- [x] if / else
 - @storage_var - declares variable to be stored in storage
 - @external - function can be called by other users and contracts
 - @view - same as @external, in addition read-only
@@ -129,7 +129,8 @@ nile node
 - recursion
 - [x] memory array
 - [ ] state variable array?
-- array, tuple, struct calldata
+- array, struct calldata
+- [ ] tuple
 - alloc
 - [x] emit event
   - low level emit_event
