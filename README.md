@@ -123,7 +123,7 @@ nile node
 - import
 - [x] token
 - [ ] wallet
-- math
+- [x] math
 - [x] error
 - map
 - recursion
