@@ -118,7 +118,7 @@ nile node
 - @storage_var - declares variable to be stored in storage
 - @external - function can be called by other users and contracts
 - @view - same as @external, in addition read-only
-- builtins (range_check)
+- [ ] builtins
 - implicit args
 - import
 - [x] token
@@ -147,6 +147,7 @@ nile node
 - L1 to L2, L2 to L1
 - [ ] default entry point
 - hash (keccak, pedersen)
+- [x] pedersen hash
 - ecdsa
 - amm
 
