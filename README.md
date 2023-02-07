@@ -113,7 +113,12 @@ nile node
 - [x] felt
 - [x] counter
 - [x] function (input, outputs)
+- [ ] revoked refs
 - [ ] variable
+  - [ ] let
+  - [ ] tempvar
+  - [ ] local
+  - [ ] storage
 - [x] if / else
 - @storage_var - declares variable to be stored in storage
 - @external - function can be called by other users and contracts
