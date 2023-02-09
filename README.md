@@ -116,9 +116,10 @@ nile node
 - [ ] revoked refs
 - [ ] variable
   - [ ] let
-  - [ ] tempvar
-  - [ ] local
+  - [x] tempvar
+  - [x] local?
   - [ ] storage
+- [x] assert
 - [x] if / else
 - @storage_var - declares variable to be stored in storage
 - @external - function can be called by other users and contracts
@@ -161,7 +162,7 @@ nile node
 - [ ] registers
 
   - [x] ap
-  - [ ] fp
+  - [ ] fp?
   - [ ] pc
 
 - [ ] tools (nile)
