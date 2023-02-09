@@ -20,3 +20,9 @@ func example_3() -> (x: felt) {
 
     return (x,);
 }
+
+@view
+func example_4() -> (y: felt) {
+    tempvar x = 123;
+    return (x*x*x + 23*x*x + 45*x + 67,);
+}
