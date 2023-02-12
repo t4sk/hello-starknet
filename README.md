@@ -132,7 +132,7 @@ nile node
 - [x] math
 - [x] error
 - map
-- recursion
+- [x] recursion
 - [x] memory array
 - [ ] state variable array?
 - array, struct calldata
