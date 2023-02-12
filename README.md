@@ -130,12 +130,14 @@ nile node
 - [x] token
 - [ ] wallet
 - [x] math
+- [ ] boolean expressions
 - [x] error
 - map
 - [x] recursion
 - [x] memory array
 - [ ] state variable array?
-- array, struct calldata
+- [x] array calldata
+- struct calldata
 - [ ] tuple
 - alloc
 - [x] emit event
