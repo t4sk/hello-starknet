@@ -137,6 +137,8 @@ nile node
 - [x] memory array
 - [ ] state variable array?
 - [x] array calldata
+- [ ] pointer
+- [x] struct
 - struct calldata
 - [ ] tuple
 - alloc
