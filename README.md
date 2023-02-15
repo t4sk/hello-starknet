@@ -140,7 +140,7 @@ nile node
 - [ ] pointer
 - [x] struct
 - struct calldata
-- [ ] tuple
+- [x] tuple
 - alloc
 - [x] emit event
   - low level emit_event
@@ -151,7 +151,7 @@ nile node
 - [ ] sender
 - [x] block info
 - [x] tx info
-- [ ] interface, calling other contracts
+- [x] interface, calling other contracts
 - delegate call (library call)
 - [ ] factory
 - L1 to L2, L2 to L1
