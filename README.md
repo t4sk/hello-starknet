@@ -153,13 +153,14 @@ nile node
 - [x] tx info
 - [x] interface, calling other contracts
 - delegate call (library call)
-- [ ] factory
+- [x] factory
 - L1 to L2, L2 to L1
 - [ ] default entry point
 - hash (keccak, pedersen)
 - [x] pedersen hash
 - ecdsa
 - amm
+- [ ] cast
 
 # cairo
 
