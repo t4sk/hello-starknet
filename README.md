@@ -152,7 +152,7 @@ nile node
 - [x] block info
 - [x] tx info
 - [x] interface, calling other contracts
-- delegate call (library call)
+- [x] delegate call (library call)
 - [x] factory
 - L1 to L2, L2 to L1
 - [ ] default entry point
