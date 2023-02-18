@@ -156,6 +156,7 @@ nile node
 - [x] factory
 - L1 to L2, L2 to L1
 - [ ] default entry point
+- [ ] L1 default
 - hash (keccak, pedersen)
 - [x] pedersen hash
 - ecdsa
