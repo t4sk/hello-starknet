@@ -27,8 +27,6 @@ touch .env
 
 # list starknet accounts
 cat ~/.starknet_accounts/starknet_open_zeppelin_accounts.json
-
-
 ```
 
 ### Compile and run cairo
@@ -154,7 +152,8 @@ nile node
 - [x] interface, calling other contracts
 - [x] delegate call (library call)
 - [x] factory
-- [ ] L1 to L2, L2 to L1
+- [x] L2 to L1
+- [ ] L1 to L2
 - [ ] default entry point
 - [ ] L1 default
 - hash (keccak, pedersen)
@@ -173,4 +172,4 @@ nile node
 
 - [ ] tools (nile)
 
-### Cairo
+# starks

@@ -1,15 +1,30 @@
 %lang starknet
 
-from starkware.cairo.common.alloc import alloc
-from starkware.starknet.common.messages import send_message_to_l1
+from starkware.cairo.common.cairo_builtins import HashBuiltin
 
-@external
-func send_message{syscall_ptr: felt*}(l1_contract_addr: felt, x: felt, y: felt) -> () {
-    let payload_size = 2;
-    let (payload: felt*) = alloc();
-    assert payload[0] = x;
-    assert payload[1] = y;
+@storage_var
+func count() -> (count: felt) {
+}
 
-    send_message_to_l1(l1_contract_addr, payload_size, payload);
+@l1_handler
+func receive_l1_msg{
+    syscall_ptr: felt*, 
+    pedersen_ptr: HashBuiltin*, 
+    range_check_ptr
+}(from_address: felt, i: felt) {
+    // NOTE: first input must be named from_address
+
+    let (c) = count.read();
+    count.write(c + i);
+
     return ();
+}
+
+@view
+func get_count{
+    syscall_ptr: felt*, 
+    pedersen_ptr: HashBuiltin*, 
+    range_check_ptr
+}() -> (count: felt) {
+    return count.read();
 }
