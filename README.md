@@ -153,12 +153,13 @@ nile node
 - [x] delegate call (library call)
 - [x] factory
 - [x] L2 to L1
-- [ ] L1 to L2
-- [ ] default entry point
+- [x] L1 to L2
+- [x] default entry point
 - [ ] L1 default
 - hash (keccak, pedersen)
 - [x] pedersen hash
 - ecdsa
+- [x] signature
 - amm
 - [ ] cast
 
