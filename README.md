@@ -152,10 +152,14 @@ nile node
 - [x] interface, calling other contracts
 - [x] delegate call (library call)
 - [x] factory
+- [ ] L2 fees
+- [ ] L1 -> L2 fees
+- [ ] L2 -> L1 fees
 - [x] L2 to L1
 - [x] L1 to L2
 - [x] default entry point
 - [ ] L1 default
+- [ ] library call l1 handler
 - hash (keccak, pedersen)
 - [x] pedersen hash
 - ecdsa
