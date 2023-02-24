@@ -131,6 +131,8 @@ nile node
 - [ ] boolean expressions
 - [x] error
 - map
+- [ ] visibility
+- [ ] namespace
 - [x] recursion
 - [x] memory array
 - [ ] state variable array?
