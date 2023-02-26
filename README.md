@@ -167,6 +167,7 @@ nile node
 - ecdsa
 - [x] signature
 - amm
+- token bridge
 - [ ] cast
 
 # cairo
