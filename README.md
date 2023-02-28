@@ -111,6 +111,7 @@ nile node
 - [x] felt
 - [x] counter
 - [x] function (input, outputs)
+- [ ] Reference 'syscall_ptr' was revoked (function must be defined before called)
 - [ ] revoked refs
 - [ ] variable
   - [ ] let
@@ -166,7 +167,7 @@ nile node
 - [x] pedersen hash
 - ecdsa
 - [x] signature
-- amm
+- [x] amm
 - token bridge
 - [ ] cast
 
