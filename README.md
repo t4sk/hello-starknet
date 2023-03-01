@@ -75,7 +75,7 @@ nile node
 - @view - same as @external, in addition read-only
 - [ ] builtins
 - implicit args
-- import
+- [x] import
 - [x] token
 - [ ] wallet
 - [x] math
