@@ -119,6 +119,8 @@ nile node
 - [x] signature
 - [x] amm
 - token bridge
+  - [ ] cancel
+  - [ ] fee
 - [ ] cast
 
 # cairo
