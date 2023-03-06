@@ -3,10 +3,10 @@
 export STARKNET_NETWORK=alpha-goerli
 export STARKNET_WALLET=starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount
 
-export CONTRACT=factory_2
+export CONTRACT=l2_pool
 
 # compile
-starknet-compile contracts/$CONTRACT.cairo \
+starknet-compile contracts/bridge/$CONTRACT.cairo \
     --output compiled/$CONTRACT.json \
     --abi abi/$CONTRACT.json
 
