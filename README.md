@@ -122,6 +122,7 @@ nile node
   - [ ] cancel
   - [ ] fee
 - [ ] cast
+- [ ] curve like amm?
 
 # cairo
 
