@@ -19,6 +19,10 @@ func withdraw_event(caller: felt, amount: felt) {
 }
 
 @event
+func receive_from_l1_event(from_address: felt, to: felt, amount: felt) {
+}
+
+@event
 func send_to_l1_event(caller: felt, to: felt, amount: felt) {
 }
 
@@ -61,6 +65,17 @@ func get_balance_of{
 }
 
 // TODO: cancel send
+@l1_handler
+func receive_from_l1{
+    syscall_ptr: felt*,
+    pedersen_ptr: HashBuiltin*,
+    range_check_ptr,
+}(from_address: felt, to: felt, amount: felt) {
+    // TODO: require from_address = l1 contract
+    receive_from_l1_event.emit(from_address, to, amount);
+    return ();
+}
+
 @external
 func send_to_l1{
     syscall_ptr: felt*,
