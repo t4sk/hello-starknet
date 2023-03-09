@@ -6,6 +6,8 @@ from starkware.cairo.common.math import assert_not_zero, assert_nn_le
 from starkware.starknet.common.syscalls import get_caller_address
 from starkware.starknet.common.messages import send_message_to_l1
 
+// 0x052540f5c9e96015a5b540afedb6467f0dd496f062276a085dd14d5b97142daf
+
 // TODO - token
 
 // events //
