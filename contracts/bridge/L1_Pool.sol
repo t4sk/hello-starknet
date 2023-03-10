@@ -17,7 +17,6 @@ interface IStarknetCore {
 }
 
 // TODO: cancel send
-// 0x1E6F42f04D64D55ec08d6D4e6A7CB4a235E1c742
 // 0x6CeC930579e5815145d6a674f793e919f90778ab
 contract L1Pool {
     IStarknetCore public immutable starknetCore;

@@ -6,7 +6,7 @@ from starkware.cairo.common.math import assert_not_zero, assert_nn_le
 from starkware.starknet.common.syscalls import get_caller_address
 from starkware.starknet.common.messages import send_message_to_l1
 
-// 0x052540f5c9e96015a5b540afedb6467f0dd496f062276a085dd14d5b97142daf
+// 0x07d7002b4a40a8e9d3b6969072c3755ee6dbdc3696e7ff8feb18fe72c4be4d62
 
 // TODO - token
 
@@ -35,6 +35,48 @@ func l1_contract() -> (res: felt) {
 
 @storage_var
 func balances(account: felt) -> (res: felt) {
+}
+
+@storage_var
+func from_addr() -> (res: felt) {
+}
+
+@storage_var
+func to_addr() -> (res: felt) {
+}
+
+@storage_var
+func l1_amount() -> (res: felt) {
+}
+
+@view
+func get_from_addr{
+    syscall_ptr: felt*,
+    pedersen_ptr: HashBuiltin*,
+    range_check_ptr,
+}() -> (addr: felt) {
+    let (addr) = from_addr.read();
+    return (addr,);
+}
+
+@view
+func get_to_addr{
+    syscall_ptr: felt*,
+    pedersen_ptr: HashBuiltin*,
+    range_check_ptr,
+}() -> (addr: felt) {
+    let (addr) = to_addr.read();
+    return (addr,);
+}
+
+@view
+func get_l1_amount{
+    syscall_ptr: felt*,
+    pedersen_ptr: HashBuiltin*,
+    range_check_ptr,
+}() -> (addr: felt) {
+    let (addr) = l1_amount.read();
+    return (addr,);
 }
 
 @external
@@ -74,6 +116,10 @@ func receive_from_l1{
     range_check_ptr,
 }(from_address: felt, to: felt, amount: felt) {
     // TODO: require from_address = l1 contract
+    from_addr.write(from_address);
+    to_addr.write(to);
+    l1_amount.write(amount);
+
     receive_from_l1_event.emit(from_address, to, amount);
     return ();
 }
