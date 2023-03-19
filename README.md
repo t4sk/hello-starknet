@@ -123,6 +123,7 @@ nile node
   - [ ] fee
 - [ ] cast
 - [ ] curve like amm?
+- [ ] cross chain amm
 
 # cairo
 
