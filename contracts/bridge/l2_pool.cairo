@@ -6,10 +6,6 @@ from starkware.cairo.common.math import assert_not_zero, assert_nn_le
 from starkware.starknet.common.syscalls import get_caller_address
 from starkware.starknet.common.messages import send_message_to_l1
 
-// 0x07d7002b4a40a8e9d3b6969072c3755ee6dbdc3696e7ff8feb18fe72c4be4d62
-
-// TODO - token
-
 // events //
 // TODO: index?
 @event
@@ -205,7 +201,20 @@ func withdraw{
 }(amount: felt) {
     // TODO: assert caller != 0?
     let (caller) = get_caller_address();
-    _withdraw(caller, amount);
+
+    with_attr error_message("account = 0") {
+        assert_not_zero(account);
+    }
+
+    let (bal) = balances.read(account);
+
+    with_attr error_message("amount > balance") {
+        assert_nn_le(amount, bal);
+    }
+
+    // TODO: underflow?
+    balances.write(account, bal - amount);
+
     withdraw_event.emit(caller, amount);
 
     return ();
