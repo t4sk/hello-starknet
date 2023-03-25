@@ -2,44 +2,45 @@ pragma solidity ^0.8;
 
 // import "./IERC20.sol";
 
+// 0xa2b26Aa8fE7b5C0D1C9288c372F49f576bae4e4b
 contract L1Pool {
+    event SendToL2(address indexed _from, uint indexed to, uint amount);
+    event ReceiveFromL2(uint indexed to, uint amount);
+
     IStarknetCore public immutable starknetCore;
     // IERC20 public immutable token
 
     uint public l2;
     
     mapping(uint => uint) public balances;
+
+    // receive_from_l1
+    uint constant L2_SELECTOR = 598342674068027518481179578557554850038206119856216505601406522348670006916;
  
     // starknet core
     // 0xde29d060D45901Fb19ED6C6e959EB22d8626708e
     constructor(IStarknetCore _starknetCore) {
         starknetCore = _starknetCore;
-        // token = _token;
     }
 
     function setL2(uint addr) external {
         l2 = addr;
     }
     
-    event SendToL2(address indexed _from, uint indexed to, uint amount);
-    
     function sendToL2(uint to, uint amount) external {
         require(to > 0, "to = 0");
         require(amount > 0, "amount = 0");
+        require(l2 != 0, "l2 = 0");
         // TODO: pull token
         
-        // TODO:
-        uint256 l2Selector = 0;
         uint256[] memory payload = new uint256[](2);
         payload[0] = to;
         payload[1] = amount;
  
-        starknetCore.sendMessageToL2(l2, l2Selector, payload);
+        starknetCore.sendMessageToL2(l2, L2_SELECTOR, payload);
         
         emit SendToL2(msg.sender, to, amount);
-    }
-    
-    event ReceiveFromL2(uint indexed to, uint amount);
+    } 
     
     function receiveFromL2(
         uint256 to,

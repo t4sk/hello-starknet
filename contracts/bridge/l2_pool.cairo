@@ -6,6 +6,11 @@ from starkware.cairo.common.math import assert_not_zero, assert_nn_le
 from starkware.starknet.common.syscalls import get_caller_address
 from starkware.starknet.common.messages import send_message_to_l1
 
+// L2 account
+// 0x024c356efa03b4910b4645deb0a4401b5cbf7b5640ea8a1a161bcce099350ea7
+// contract
+// 0x077f460849240a1b8eb960142a7b71678dbd95947f56042926e33b27b5d79f11
+
 // events //
 // TODO: index?
 @event
@@ -33,48 +38,6 @@ func l1_contract() -> (res: felt) {
 func balances(account: felt) -> (res: felt) {
 }
 
-@storage_var
-func from_addr() -> (res: felt) {
-}
-
-@storage_var
-func to_addr() -> (res: felt) {
-}
-
-@storage_var
-func l1_amount() -> (res: felt) {
-}
-
-@view
-func get_from_addr{
-    syscall_ptr: felt*,
-    pedersen_ptr: HashBuiltin*,
-    range_check_ptr,
-}() -> (addr: felt) {
-    let (addr) = from_addr.read();
-    return (addr,);
-}
-
-@view
-func get_to_addr{
-    syscall_ptr: felt*,
-    pedersen_ptr: HashBuiltin*,
-    range_check_ptr,
-}() -> (addr: felt) {
-    let (addr) = to_addr.read();
-    return (addr,);
-}
-
-@view
-func get_l1_amount{
-    syscall_ptr: felt*,
-    pedersen_ptr: HashBuiltin*,
-    range_check_ptr,
-}() -> (addr: felt) {
-    let (addr) = l1_amount.read();
-    return (addr,);
-}
-
 @external
 func set_l1_contract{
     syscall_ptr: felt*,
@@ -96,7 +59,7 @@ func get_l1_contract{
 }
 
 @external
-func get_balance_of{
+func get_balance{
     syscall_ptr: felt*,
     pedersen_ptr: HashBuiltin*,
     range_check_ptr,
@@ -112,9 +75,10 @@ func receive_from_l1{
     range_check_ptr,
 }(from_address: felt, to: felt, amount: felt) {
     // TODO: require from_address = l1 contract
-    from_addr.write(from_address);
-    to_addr.write(to);
-    l1_amount.write(amount);
+
+    let (bal) = balances.read(to);
+    // TODO: overflow check
+    balances.write(to, bal + amount);
 
     receive_from_l1_event.emit(from_address, to, amount);
     return ();
@@ -139,7 +103,7 @@ func send_to_l1{
         assert_not_zero(l1_addr);
     }
 
-    _withdraw(caller, amount);
+    // TODO: pull token
 
     // TODO: check L2 pool balance
     let payload_size = 2;
@@ -149,47 +113,7 @@ func send_to_l1{
 
     send_message_to_l1(l1_addr, payload_size, payload);
 
-    // send_to_l1_event.emit(caller, to, amount);
-    return ();
-}
-
-// TODO: maybe
-@external
-func deposit{
-    syscall_ptr: felt*,
-    pedersen_ptr: HashBuiltin*,
-    range_check_ptr,
-}(amount: felt) {
-    // TODO: assert caller != 0?
-    let (caller) = get_caller_address();
-    let (bal) = balances.read(caller);
-
-    // TODO: overflow check
-    balances.write(caller, bal + amount);
-
-    deposit_event.emit(caller, amount);
-
-    return ();
-}
-
-func _withdraw{
-    syscall_ptr: felt*,
-    pedersen_ptr: HashBuiltin*,
-    range_check_ptr,
-}(account: felt, amount: felt) {
-    with_attr error_message("account = 0") {
-        assert_not_zero(account);
-    }
-
-    let (bal) = balances.read(account);
-
-    with_attr error_message("amount > balance") {
-        assert_nn_le(amount, bal);
-    }
-
-    // TODO: underflow?
-    balances.write(account, bal - amount);
-
+    send_to_l1_event.emit(caller, to, amount);
     return ();
 }
 
@@ -202,18 +126,18 @@ func withdraw{
     // TODO: assert caller != 0?
     let (caller) = get_caller_address();
 
-    with_attr error_message("account = 0") {
-        assert_not_zero(account);
+    with_attr error_message("caller = 0") {
+        assert_not_zero(caller);
     }
 
-    let (bal) = balances.read(account);
+    let (bal) = balances.read(caller);
 
     with_attr error_message("amount > balance") {
         assert_nn_le(amount, bal);
     }
 
     // TODO: underflow?
-    balances.write(account, bal - amount);
+    balances.write(caller, bal - amount);
 
     withdraw_event.emit(caller, amount);
 
