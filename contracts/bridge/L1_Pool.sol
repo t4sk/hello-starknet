@@ -2,7 +2,8 @@ pragma solidity ^0.8;
 
 // import "./IERC20.sol";
 
-// 0xa2b26Aa8fE7b5C0D1C9288c372F49f576bae4e4b
+// 0xa2b26Aa8fE7b5C0D1C9288c372F0x077f460849240a1b8eb960142a7b71678dbd95947f56042926e33b27b5d79f1149f576bae4e4b
+// 0x6b645db074f05775363d9b315c82cbb3A5337C50
 contract L1Pool {
     event SendToL2(address indexed _from, uint indexed to, uint amount);
     event ReceiveFromL2(uint indexed to, uint amount);
@@ -27,7 +28,7 @@ contract L1Pool {
         l2 = addr;
     }
     
-    function sendToL2(uint to, uint amount) external {
+    function sendToL2(uint to, uint amount) external payable {
         require(to > 0, "to = 0");
         require(amount > 0, "amount = 0");
         require(l2 != 0, "l2 = 0");
@@ -37,7 +38,7 @@ contract L1Pool {
         payload[0] = to;
         payload[1] = amount;
  
-        starknetCore.sendMessageToL2(l2, L2_SELECTOR, payload);
+        starknetCore.sendMessageToL2{value: msg.value}(l2, L2_SELECTOR, payload);
         
         emit SendToL2(msg.sender, to, amount);
     } 
@@ -69,7 +70,7 @@ interface IStarknetCore {
         uint256 toAddress,
         uint256 selector,
         uint256[] calldata payload
-    ) external returns (bytes32);
+    ) external payable returns (bytes32);
 
     function consumeMessageFromL2(
         uint256 fromAddress,
