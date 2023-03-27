@@ -6,6 +6,9 @@ from starkware.cairo.common.math import assert_not_zero, assert_nn_le
 from starkware.starknet.common.syscalls import get_caller_address
 from starkware.starknet.common.messages import send_message_to_l1
 
+// starknet call --address $CONTRACT_ADDR --abi abi/l2_pool.json --function get_balance --inputs 0x024c356efa03b4910b4645deb0a4401b5cbf7b5640ea8a1a161bcce099350ea7
+
+
 // L2 account
 // 0x024c356efa03b4910b4645deb0a4401b5cbf7b5640ea8a1a161bcce099350ea7
 // contract
