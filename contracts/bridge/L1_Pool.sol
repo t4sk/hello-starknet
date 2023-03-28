@@ -41,7 +41,7 @@ contract L1Pool {
         starknetCore.sendMessageToL2{value: msg.value}(l2, L2_SELECTOR, payload);
         
         emit SendToL2(msg.sender, to, amount);
-    } 
+    }
     
     function receiveFromL2(
         uint256 to,
