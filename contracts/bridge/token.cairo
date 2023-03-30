@@ -2,7 +2,7 @@
 
 from starkware.cairo.common.cairo_builtins import HashBuiltin
 from starkware.starknet.common.syscalls import get_caller_address
-from starkware.cairo.common.math import assert_le
+from starkware.cairo.common.math import assert_not_zero, assert_le
 
 @event
 func Transfer(_from: felt, to: felt, value: felt) {
@@ -44,14 +44,15 @@ func assert_only_owner{
     pedersen_ptr: HashBuiltin*,
     range_check_ptr,
 }() {
-    let (owner) = owner.read();
+    let (owner_addr) = owner.read();
     let (caller) = get_caller_address();
-    // TODO: when?
+
+    // TODO: when is caller == 0?
     with_attr error_message("Caller is zero address") {
         assert_not_zero(caller);
     }
     with_attr error_message("Not authorized") {
-        assert owner = caller;
+        assert owner_addr = caller;
     }
     return ();
 }
@@ -61,10 +62,25 @@ func set_owner{
     syscall_ptr: felt*,
     pedersen_ptr: HashBuiltin*,
     range_check_ptr,
-}(owner: felt) {
+}(new_owner: felt) {
     assert_only_owner();
-    owner.write(owner);
+
+    with_attr error_message("new owner = 0") {
+        assert_not_zero(new_owner);
+    }
+
+    owner.write(new_owner);
     return ();
+}
+
+@view
+func get_owner{
+    syscall_ptr: felt*,
+    pedersen_ptr: HashBuiltin*,
+    range_check_ptr,
+}() -> (owner: felt) {
+    let (res) = owner.read();
+    return (res,);
 }
 
 @external
@@ -113,7 +129,20 @@ func approve{
     syscall_ptr: felt*,
     pedersen_ptr: HashBuiltin*,
     range_check_ptr,
-}(amount: felt) {
+}(spender: felt, amount: felt) {
+    // TODO: check amount
+
+    let (caller) = get_caller_address();
+
+    with_attr error_message("Caller is zero address") {
+        assert_not_zero(caller);
+    }
+    with_attr error_message("Spender is zero address") {
+        assert_not_zero(spender);
+    }
+
+    allowances.write(caller, spender, amount);
+
     return ();
 }
 
